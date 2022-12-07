@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>METANIT.COM</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Имя</label><br>
+            <input type="text" name="name" value="{{person.name}}" />
+        </p>
+        <p>
+            <label>Email</label><br>
+            <input type="text" name="email" value="{{person.age}}" />
+        </p>
+        <input type="submit" value="Save" >
+    </form>
+</body>
+</html>
