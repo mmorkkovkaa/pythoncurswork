@@ -8,12 +8,16 @@
     <form method="POST">
         {% csrf_token %}
         <p>
-            <label>Имя</label><br>
+            <label>Name</label><br>
             <input type="text" name="name" value="{{person.name}}" />
         </p>
         <p>
-            <label>Email</label><br>
-            <input type="text" name="email" value="{{person.age}}" />
+            <label>Phone number</label><br>
+            <input type="number" name="number" value="{{person.phone}}" />
+        </p>
+        <p>
+            <label>Describe your problem!</label><br>
+            <input type="text" name="description" value="{{person.description}}" />
         </p>
         <input type="submit" value="Save" >
     </form>

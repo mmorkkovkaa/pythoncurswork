@@ -3,61 +3,69 @@
 
 <html>
 <head>
-    <title>Бодрость</title>
+    <title>Fröhlichkeit</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="static/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'styles/layout.css' %}" rel="stylesheet" type="text/css" media="all ">
     <!--    <link rel="stylesheet" href="{% static 'css/style.css' %}">-->
-    <link rel="stylesheet" href="{% static 'css/styles/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/layout.css' %}">
 
 </head>
 <body id="top">
+
  {% for i in index %}
 <div class="bgded" style="background-image: url({{i.image.url}})" >
     <div class="wrapper overlay">
         <header id="header" class="hoc clear">
             <nav id="mainav" class="clear">
                 <ul class="clear: none">
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;" class="active"><a href="/">Главная</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;"><a href="Dentist/">Стоматолог</a>
+          <li class="active"><a href="/">Home Page</a></li>
+          <li><a href="Dentist/">Dentistry</a>
           </li>
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;"><a href="Surgeon">Хирург</a>
+          <li><a href="Surgeon/">Surgery</a>
           </li>
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;"><a href="Pediatrician/">Педиатор</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;"><a href="Gynecologist/">Гинеколог</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 1270px; text-align:center;  margin:5px; padding:5px;"><a href="Contacts/">О нас</a></li>
+          <li><a href="Pediatrician/">Pediatrics</a></li>
+          <li><a href="Gynecologist/">Gynecology</a></li>
+          <li><a href="AboutAs/">About us</a></li>
         </ul>
 
           </nav>
       <div id="logo">
-        <h1 align="center" style="font-size: 85px; color: #008000" >Бодрость</h1>
+        <h1>{{i.title}}</h1>
+        <h4>{{i.description}}</h4>
       </div>
     </header>
   </div>
   {% endfor %}
+
   {% for a in backtext %}
     <div id="pageintro" class="hoc clear">
         <article>
             <div class="introtxt">
                 <p class="font-xs nospace"></p>
-                <h2 align="center" class="heading" style="font-size: 30px; color: #000000">{{a.title}}</h2>
-                <p align="center" style="font-size: 20px; color: #000000" >{{a.description}}</p>
+                <h2 >{{a.title}}</h2>
+                <p >{{a.description}}</p>
             </div>
             {% endfor %}
         </article>
     </div>
 </div>
+
+ {% for i in backtext2 %}
 <div class="wrapper row3">
   <main class="hoc container clear">
     <div class="center btmspace-50">
-      <h2 align="center" class="heading">Наши услуги</h2>
+      <h2 class="heading">{{i.title}}</h2>
+        <h3>{{i.description}}</h3>
     </div>
+
+  {% endfor %}
+      {% for i in posts %}
     <ul  class="nospace group blocks">
-      <li  style="border:2px solid #555; box-shadow:3px 3px 5px #999; width: 1220px; text-align:center;  margin:20px; padding:20px;" class="one_quarter first bgded overlay"  ><a class="btn medium" href="Dentist/">Cтоматология</a></li>
-      <li style="border:2px solid #555; box-shadow:3px 3px 5px #999; width: 1220px; text-align:center;  margin:20px; padding:20px;" class="one_quarter bgded overlay" ><a class="btn medium" href="Surgeon/">Хирургия</a></li>
-      <li style="border:2px solid #555; box-shadow:3px 3px 5px #999; width: 1220px; text-align:center;  margin:20px; padding:20px;" class="one_quarter bgded overlay" ><a class="btn medium" href="Pediatrician/">Педиатрия</a></li>
-      <li style="border:2px solid #555; box-shadow:3px 3px 5px #999; width: 1220px; text-align:center;  margin:20px; padding:20px;"  class="one_quarter bgded overlay" ><a class="btn medium" href="Gynecilogist/">Генекология</a></li>
+      <li class="one_quarter first bgded overlay"
+          style="background-image: url({{i.image.url}})" >{{i.title}}</li>
     </ul>
+      {% endfor %}
     <div class="clear"></div>
   </main>
 </div>
@@ -65,14 +73,14 @@
 <div class="bgded overlay" style="background-image:url({{v.image.url}});">
     <section id="testimonials" class="hoc container clear">
         <div class="center btmspace-50">
-            <h2 align="center" class="heading">{{v.title}}</h2>
-            <p align="center" >{{v.description}}</p>
+            <h2 align="center" class="heading" style="color:black">{{v.title}}</h2>
+            <p align="center" style="color:black" >{{v.description}}</p>
         </div>
         {% endfor %}
         <ul class="nospace group">
             <li class="one_half first">
                 {% for n in doctor1 %}
-                <div  class="clear" style="border:2px solid #555; box-shadow:3px 3px 5px #999; width: 1220px; text-align:center;  margin:20px; padding:20px;"><img src={{n.image.url}} alt=""> <span
+                <div  class="clear"><img src={{n.image.url}} alt=""> <span
                         class="block"><strong>{{n.title}}</strong> </span>
                     <blockquote>{{n.description}}</blockquote>
                 </div>
@@ -84,16 +92,16 @@
 <div class="wrapper row3">
     <section class="hoc container clear">
         <div class="center btmspace-50">
-            <h2 align="center" class="heading">Последние события в нашей клинике</h2>
+            <h2 align="center" class="heading">Recent events in our clinic</h2>
         </div>
         <ul class="nospace elements">
             <li class="one_third first">
                 <article><a href="#"></a>
                     {% for j in news1 %}
                     <div class="txtwrap">
-                        <h6 style="font-size: 18px; color: green" class="heading">{{j.title}}</h6>
+                        <h6 class="heading" >{{j.title}}</h6>
                         <time><sup></sup> {{j.datetime}}</time>
-                        <p style="border:3px #00B344  solid; width: 700px; padding: 5px 0 5px 15px;">{{j.description}}</p>
+                        <p>{{j.description}}</p>
                         <footer><a href="Dentist/">{{j.add}} &raquo;</a></footer>
                     </div>
                     {% endfor %}
@@ -103,10 +111,10 @@
                 <article><a href="#"></a>
                     {% for f in news2 %}
                     <div class="txtwrap">
-                        <h6 style="font-size: 18px; color: green" class="heading">{{f.title}}</h6>
+                        <h6 class="heading">{{f.title}}</h6>
                         <time><sup></sup> {{f.datetime}}</time>
-                        <p style="border:3px #00B344  solid; width: 700px; padding: 5px 0 5px 15px;" >{{f.description}}</p>
-                        <footer><a href="Gynecilogist/">{{f.add}} &raquo;</a></footer>
+                        <p>{{f.description}}</p>
+                        <footer><a href="Gynecologist/">{{f.add}} &raquo;</a></footer>
                     </div>
                     {% endfor %}
                 </article>
@@ -115,9 +123,9 @@
                 <article><a href="#"></a>
                     {% for g in news3 %}
                     <div class="txtwrap">
-                        <h6 style="font-size: 18px; color: green" class="heading">{{g.title}}</h6>
+                        <h6 class="heading">{{g.title}}</h6>
                         <time><sup></sup> {{g.datetime}}</time>
-                        <p style="border:3px #00B344  solid; width: 700px; padding: 5px 0 5px 15px;" >{{g.description}}</p>
+                        <p >{{g.description}}</p>
                         <footer><a href="Surgeon/">{{g.add}} &raquo;</a></footer>
                     </div>
                     {% endfor %}
@@ -130,49 +138,61 @@
     <div class="hoc clear">
     </div>
 </div>
-
- <div class="wrapper row4">
-    <footer id="footer" class="hoc clear">
-        {% for t in kontact %}
-        <div class="one_quarter first">
-            <h2 align="right" class="title">{{t.title}}</h2>
-            <ul class="nospace linklist contact">
-                <li align="right"><i class="fa fa-map-marker"></i>
-                    <address>{{t.adress}}</address>
-                </li>
-                <li align="right"><i class="fa fa-phone"></i>{{t.phonenumber}}</li>
-                <li align="right"><i class="fa fa-fax"></i>{{t.mainphone}}</li>
-                <li align="right"><i class="fa fa-envelope-o"></i> {{t.email}}</li>
-            </ul>
+ <div class="txtwrap">
+     <h2 align="center" class="heading">Our location</h2>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.6983308511635!2d74.61319802182426!3d42.83698575594953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6134a23b575%3A0x58fd671c6fdd4bf!2zMjgg0YPQuy4g0KHRg9C10YDQutGD0LvQvtCy0LAsINCR0LjRiNC60LXQug!5e0!3m2!1sru!2skg!4v1670464549058!5m2!1sru!2skg" align="center" width="1320" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  </div>
-        {% endfor %}
-    {% for p in bodrost %}
-<div class="wrapper row5" style="background-image:url({{p.image.url}});" >
-    <div  class="hoc clear">
+
+{% for i in kontact %}
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear">
+    <div class="one_quarter first">
+      <h6 class="title">{{i.title}}</h6>
+      <ul class="nospace linklist contact">
+        <li><i class="fa fa-map-marker"></i>
+          <address>{{i.adress}}</address>
+        </li>
+        <li><i class="fa fa-phone"></i>{{i.phonenumber}}<br>{{i.mainphone}}</li>
+        <li><i class="fa fa-envelope-o"></i>{{i.email}}</li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">Support Service</h6>
+      <p class="btmspace-30"></p>
         <form method="POST" action="create/">
         {% csrf_token %}
+        <p>To contact support, fill out the fields below</p>
         <p>
-            <label>Имя</label><br>
+            <label>Name</label><br>
             <input type="text" name="name" />
         </p>
-        <p >
-            <label>Email</label><br>
-            <input type="text" name="email" />
+        <p>
+            <label>Phone number</label><br>
+            <input type="number" name="phone" />
+        </p>
+        <p>
+            <label>Describe your problem!</label><br>
+            <input type="text" name="description" />
         </p>
         <input  type="submit" value="Save" >
-</form>
-        <p align="center" style="font-size: 15px; color: black" class="fl_left">{{p.title}}</p>
-        <p align="center" style="font-size: 15px; color: black" class="fl_right">{{p.description}}</p>
+        </form>
     </div>
+  </footer>
 </div>
-    {% endfor %}
+{% endfor %}
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear">
+    <p class="fl_left">Bodrost &copy; 2022 </p>
+    <p class="fl_right">Thank you for visiting our site!!!</p>
+  </div>
+</div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
-<script src="static/scripts/jquery.min.js"></script>
-<script src="static/scripts/jquery.backtotop.js"></script>
-<script src="static/scripts/jquery.mobilemenu.js"></script>
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
 <!-- IE9 Placeholder Support -->
-<script src="static/scripts/jquery.placeholder.min.js"></script>
+<script src="layout/scripts/jquery.placeholder.min.js"></script>
 <!-- / IE9 Placeholder Support -->
 </body>
 </html>
+

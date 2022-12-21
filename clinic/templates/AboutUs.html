@@ -13,36 +13,55 @@
 </head>
 <body id="top">
 
-{% for g in ginekologist %}
-<div class="bgded" style="background-image: url({{g.image.url}})" >
-  <div class="wrapper overlay">
-    <header id="header" class="hoc clear">
-      <nav id="mainav" class="clear">
-        <ul class="clear">
+{% for i in aboutas %}
+<div class="bgded" style="background-image: url({{i.image.url}})" >
+    <div class="wrapper overlay">
+        <header id="header" class="hoc clear">
+            <nav id="mainav" class="clear">
+                <ul class="clear: none">
           <li><a href="/">Home Page</a></li>
-          <li ><a href="../Dentist/">Dentistry</a></li>
+          <li  ><a href="../Dentist/">Dentistry</a></li>
           <li><a href="../Surgeon/">Surgery</a></li>
           <li><a href="../Pediatrician/">Pediatrics</a></li>
-          <li class="active"><a href="../Gynecologist/">Gynecology</a></li>
-          <li><a href="../AboutAs/">About us</a></li>
+          <li><a href="../Gynecologist/">Gynecology</a></li>
+          <li class="active"><a href="../AboutAs/">About us</a></li>
         </ul>
-      </nav>
+          </nav>
       <div id="logo">
-        <h1>{{g.title}}</h1>
-        <h4>{{g.description}}</h4>
+        <h1>{{i.title}}</h1>
+        <p>{{i.description}}</p>
       </div>
+{% endfor %}
     </header>
   </div>
-{% endfor %}
-{% for i in stateg %}
+
+{% for i in aboutasstate %}
   <div id="pageintro" class="hoc clear">
     <article>
       <div class="introtxt">
         <p class="font-xs nospace"></p>
-        <h4 class="heading">{{i.title}}</h4>
+        <h2 class="heading">{{i.title}}</h2>
+        <img src={{i.image.url}} alt="Bodrost">
         <p>{{i.description}}</p>
       </div>
 {% endfor %}
+
+      <div>
+        <section id="testimonials" class="hoc container clear">
+          <div class="center btmspace-100">
+            <h1 class="heading">Наш прайс-лист</h1>
+          </div>
+          <ul class="nospace group">
+              {% for i in service %}
+            <li class="one_half first">
+              <div class="clear"><img src={{i.image.url}} alt=""><span class="block"><strong>{{i.title}}</strong></span>
+                <blockquote>{{i.description}}</blockquote>
+              </div>
+            </li>
+              {% endfor %}
+          </ul>
+        </section>
+      </div>
       <footer>
         <ul class="nospace inline pushright">
         </ul>
@@ -51,72 +70,12 @@
   </div>
 </div>
 
-<h1></h1>
-{% for i in backtext2g %}
-<div class="wrapper row3">
-  <main class="hoc container clear">
-    <div class="center btmspace-50">
-      <h2 class="heading">{{i.title}}</h2>
-        <h3>{{i.description}}</h3>
-    </div>
-    {% endfor %}
-      {% for i in postsg %}
-    <ul  class="nospace group blocks">
-      <li class="one_quarter first bgded overlay"  style="background-image: url({{i.image.url}})" >
-          <a href="../AboutAs/">{{i.title}}</a></li>
-    </ul>
-      {% endfor %}
-    <div class="clear"></div>
-  </main>
-</div>
-{% for t in posts2g %}
-<div class=""  style="background-image: url({{t.image.url}})">
-  <section id="testimonials" class="hoc container clear">
-    <div class="center btmspace-50">
-      <h2  class="heading" style="color:black" >{{t.title}}</h2>
-      <p style="color:black" >{{t.description}}</p>
-    </div>
-{% endfor %}
-        <ul class="nospace group">
-            <li class="one_half first">
-                {% for y in doctor1g %}
-                <div  class="clear" ><img src={{y.image.url}} alt=""> <span
-                        class="block"><strong>{{y.title}}</strong> </span>
-                    <blockquote>{{y.description}}</blockquote>
-                </div>
-                {% endfor %}
-            </li>
-        </ul>
-  </section>
-</div>
-
-<div class="wrapper row3">
-  <section class="hoc container clear">
-    <div class="center btmspace-50">
-      <h2 class="heading">Advantages of our gynecology</h2>
-    </div>
-      {% for i in newsg %}
-    <ul class="nospace elements">
-      <li class="one_third first">
-        <article><img src={{i.image.url}} alt="">
-          <div class="txtwrap">
-            <h6 class="heading">{{i.title}}</h6>
-            <p>{{i.description}}</p>
-          </div>
-        </article>
-      </li>
-    </ul>
-      {% endfor %}
-  </section>
-</div>
-<div class="wrapper coloured">
-  <div class="hoc clear">
-  </div>
 </div>
  <div class="txtwrap">
      <h2 align="center" class="heading">Our location</h2>
      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.6983308511635!2d74.61319802182426!3d42.83698575594953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6134a23b575%3A0x58fd671c6fdd4bf!2zMjgg0YPQuy4g0KHRg9C10YDQutGD0LvQvtCy0LAsINCR0LjRiNC60LXQug!5e0!3m2!1sru!2skg!4v1670464549058!5m2!1sru!2skg" align="center" width="1320" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  </div>
+
 {% for i in kontact %}
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear">
@@ -140,7 +99,6 @@
   </div>
 </div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>

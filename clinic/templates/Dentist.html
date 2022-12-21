@@ -3,158 +3,139 @@
 
 <html>
 <head>
-    <title>Бодрость</title>
+    <title>Liveliness</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="static/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{% static 'styles/layout.css' %}" rel="stylesheet" type="text/css" media="all ">
     <!--    <link rel="stylesheet" href="{% static 'css/style.css' %}">-->
-    <link rel="stylesheet" href="/static/css/layout.css">
-
+    <link rel="stylesheet" href="{% static 'styles/layout.css' %}">
 </head>
 <body id="top">
- {% for d in dentist %}
+
+{% for d in dentist %}
 <div class="bgded" style="background-image: url({{d.image.url}})" >
     <div class="wrapper overlay">
         <header id="header" class="hoc clear">
             <nav id="mainav" class="clear">
                 <ul class="clear: none">
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;" class="active"><a href="/">Главная</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;"><a href="Dentist/">Стоматолог</a>
-          </li>
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;"><a href="Surgeon">Хирург</a>
-          </li>
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;"><a href="Pediatrician/">Педиатор</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;"><a href="Gynecologist/">Гинеколог</a></li>
-          <li style="border:2px solid #555; border-radius:5px; width: 150px; text-align:center;  margin:5px; padding:5px;"><a href="Contacts/">Контакты</a></li>
+          <li><a href="/">Home Page</a></li>
+          <li class="active" ><a href="../Dentist/">Dentistry</a></li>
+          <li><a href="../Surgeon/">Surgery</a></li>
+          <li><a href="../Pediatrician/">Pediatrics</a></li>
+          <li><a href="../Gynecologist/">Gynecology</a></li>
+          <li><a href="../AboutAs/">About us</a></li>
         </ul>
 
           </nav>
       <div id="logo">
-        <h1 align="center" style="font-size: 55px; color: #A8AFA6" ><a href="/">Стоматология</a></h1>
-        <p></p>
+        <h1>{{d.title}}</h1>
+        <h4>{{d.description}}</h4>
       </div>
     </header>
   </div>
-  {% endfor %}
+{% endfor %}
+
   {% for u in state %}
   <div id="pageintro" class="hoc clear">
     <article>
       <div class="introtxt">
         <p class="font-xs nospace"></p>
-        <h2 align="center" style="font-size: 18px; color: blue" class="heading">{{u.title}}</h2>
-        <p style="border:3px #0000ff solid; width: 700px; padding: 5px 0 5px 15px;">{{u.description}}</p>
+        <h2>{{u.title}}</h2>
+        <p>{{u.description}}</p>
       </div>
+      {% endfor %}
       <footer>
         <ul class="nospace inline pushright">
         </ul>
       </footer>
     </article>
   </div>
-  {% endfor %}
 </div>
 <h1></h1>
-<div class="" style="background-image:url('/images/demo/backgrounds/background9.jpg');">
+{% for i in backtext2stl %}
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <div class="center btmspace-50">
+      <h2 class="heading">{{i.title}}</h2>
+        <h3>{{i.description}}</h3>
+    </div>
+  {% endfor %}
+      {% for i in postsstl %}
+    <ul  class="nospace group blocks">
+      <li class="one_quarter first bgded overlay"  style="background-image: url({{i.image.url}})" >
+          <a href="../AboutAs/">{{i.title}}</a></li>
+    </ul>
+      {% endfor %}
+    <div class="clear"></div>
+  </main>
+</div>
+{% for t in posts2stl %}
+<div class="" style="background-image: url({{t.image.url}})">
   <section id="testimonials" class="hoc container clear">
     <div class="center btmspace-50">
-      <h2 class="heading">Наши лучшие Стоматологи</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum assumenda pariatur deserunt enim tempora placeat accusamus recusandae. Iusto facere exercitationem provident, perferendis atque non temporibus, cumque consectetur ab, assumenda quibusdam!</p>
+      <h2  class="heading" style="color:black">{{t.title}}</h2>
+      <p style="color:black" >{{t.description}}</p>
     </div>
-    <ul class="nospace group">
-      <li class="one_half first">
-        <div class="clear"><img src="images/demo/80x80.png" alt=""> <span class="block"><strong>Бекчороева Жанара Жакыпбековна</strong> / <em>Position, Company Name</em></span>
-          <blockquote>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis ratione suscipit aspernatur, sapiente maiores blanditiis vit&hellip;</blockquote>
-        </div>
-      </li>
-      <li class="one_half">
-        <div class="clear"><img src="images/demo/80x80.png" alt=""><span class="block"><strong>Пятибратова Алена Александровна </strong> / <em>Position, Company Name</em></span>
-          <blockquote>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis ratione suscipit aspernatur, sapiente maiores blanditiis vit&hellip;</blockquote>
-        </div>
-      </li>
-    </ul>
+{% endfor %}
+        <ul class="nospace group">
+            <li class="one_half first">
+                {% for y in doctor1stl %}
+                <div  class="clear" ><img src={{y.image.url}} alt=""> <span
+                        class="block"><strong>{{y.title}}</strong> </span>
+                    <blockquote>{{y.description}}</blockquote>
+                </div>
+                {% endfor %}
+            </li>
+        </ul>
   </section>
 </div>
 <div class="wrapper row3">
-  <section class="hoc container clear">
-    <div class="center btmspace-50">
-      <h2 class="heading">Новости</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aperiam perferendis natus laudantium soluta voluptatem quis assumenda, non tempora sapiente, dolor odit saepe commodi perspiciatis placeat recusandae consequatur, delectus sequi?</p>
-    </div>
-    <ul class="nospace elements">
-      <li class="one_third first">
-        <article><a href="#"><img src="images/demo/images.jfif" alt=""></a>
-          <div class="txtwrap">
-            <h6 class="heading">Скидки на отбеливание зубов</h6>
-            <time datetime="2045-04-06">6<sup></sup> Мая 2022</time>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum magni facilis debitis? Rerum&hellip;</p>
-            <footer><a href="#">Читать &raquo;</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><img src="images/demo/gallery/pediatr-almaty-ls-clinic.jpg" alt=""></a>
-          <div class="txtwrap">
-            <h6 class="heading">Бесплатная и быстрая запись к педиатру</h6>
-            <time datetime="2045-04-05">5<sup></sup> Августа 2022</time>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum magni facilis debitis? Rerum&hellip;</p>
-            <footer><a href="#">Читать &raquo;</a></footer>
-          </div>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><img src="images/demo/gallery/Хирург.jfif" alt=""></a>
-          <div class="txtwrap">
-            <h6 class="heading">Лучший хирург нашей клиники</h6>
-            <time datetime="2045-04-04">4<sup></sup> Октября 2022</time>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum magni facilis debitis? Rerum&hellip;</p>
-            <footer><a href="#">Читать &raquo;</a></footer>
-          </div>
-        </article>
-      </li>
-    </ul>
-  </section>
+    <section class="hoc container clear">
+        <div class="center btmspace-50">
+            <h2 align="center" class="heading">News of our dentistry!</h2>
+        </div>
+        <ul class="nospace elements">
+            {% for j in newsstl %}
+            <li class="one_third first">
+             <article><img src={{j.image.url}}" alt="">
+                    <div class="txtwrap">
+                        <h6 class="heading" >{{j.title}}</h6>
+                        <p>{{j.description}}</p>
+                    </div>
+             </article>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
-<div class="wrapper coloured">
-  <div class="hoc clear">
-  </div>
-</div>
+ <div class="txtwrap">
+     <h2 align="center" class="heading">Our location</h2>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.6983308511635!2d74.61319802182426!3d42.83698575594953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389eb6134a23b575%3A0x58fd671c6fdd4bf!2zMjgg0YPQuy4g0KHRg9C10YDQutGD0LvQvtCy0LAsINCR0LjRiNC60LXQug!5e0!3m2!1sru!2skg!4v1670464549058!5m2!1sru!2skg" align="center" width="1320" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+ </div>
+
+{% for i in kontact %}
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear">
     <div class="one_quarter first">
-      <h6 class="title">Наши контакты</h6>
+      <h6 class="title">{{i.title}}</h6>
       <ul class="nospace linklist contact">
         <li><i class="fa fa-map-marker"></i>
-          <address>
-          Street Name &amp; Number, Town, Postcode/Zip
-          </address>
+          <address>{{i.adress}}</address>
         </li>
-        <li><i class="fa fa-phone"></i> +996 000 323 565<br>
-          +996 000 333 666</li>
-        <li><i class="fa fa-fax"></i> +996 778 135 589</li>
-        <li><i class="fa fa-envelope-o"></i> Bodrost456@gmail.com</li>
+        <li><i class="fa fa-phone"></i>{{i.phonenumber}}<br>{{i.mainphone}}</li>
+        <li><i class="fa fa-envelope-o"></i>{{i.email}}</li>
       </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="title">написать в поддержку</h6>
-      <p class="btmspace-30">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi explicabo similique.</p>
-      <form method="post" action="#">
-        <fieldset>
-          <legend>Newsletter:</legend>
-          <input class="btmspace-15" type="text" value="" placeholder="Name">
-          <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button type="submit" value="submit">Отправить</button>
-        </fieldset>
-      </form>
     </div>
   </footer>
 </div>
+{% endfor %}
 <div class="wrapper row5">
   <div id="copyright" class="hoc clear">
-    <p class="fl_left">Bodrost &copy; 2022 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Спасибо что <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">посетили наш сайт!!!</a></p>
+    <p class="fl_left">Bodrost &copy; 2022 </p>
+    <p class="fl_right">Thank you for visiting our site!!!</p>
   </div>
 </div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
@@ -163,3 +144,4 @@
 <!-- / IE9 Placeholder Support -->
 </body>
 </html>
+
